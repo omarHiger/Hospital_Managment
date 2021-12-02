@@ -1,43 +1,55 @@
 create table hospital(
 
-SerialNumber int primary key not null,
+SerialNumber int primary key,
 Name_HO nvarchar(50),
 City nvarchar(50),
 Street nvarchar(50),
 Area nvarchar(50)
 )
+create table HO_Phone(
+  HO_Phone nvarhcar(10),
+  Ho_SerialNumber ,
+  constraint Ho_Phone_SerialNumber_FK foreign key (Ho_SerialNumber) refernces  hospital(SerialNumber)
+)
 create table Doctor
 (
-Doc_ID int primary key not null,
+Doc_ID int primary key,
 First_Name nvarchar(50),
 Middle_Name nvarchar(50),
 Last_Name  nvarchar(50),
-Acount nvarchar(50),
+Email nvarchar(50),
+Password nvarchar(50),
 Gender nvarchar(50),
 Date_of_hiring date ,
 Birth_Date date,
-National_number int unique ,
+National_number int unique,
 City nvarchar(50),
 Street nvarchar(50),
 Area nvarchar(50),
 social_status nvarchar(50),
 Family_mamber  int ,
 Specialization nvarchar(50),
-Qualificationsþ nvarchar(50),
+QualificationsÃ¾ nvarchar(50),
+Ho_SerialNumber int ,  
+Manager_ID int ,  
+constraint Do_Hospital_SerialNumber_FK foreign key (Ho_SerialNumber) refernces  hospital(SerialNumber),
+constraint Do_Manager_ID_FK foreign key (Manager_ID) refernces  doctor(Doc_ID)
 )
 
 create table Patient
 (
-ID_Pa int primary key not null,
+Pa_ID int primary,
 First_Name nvarchar(50),
 Middle_Name nvarchar(50),
 Last_Name  nvarchar(50),
 City nvarchar(50),
 Street nvarchar(50),
 Area nvarchar(50),
+X_Y geography,
 Gender nvarchar(50),
 Birth_Date date,
-Acount nvarchar(50),
+Email nvarchar(50),
+Password nvarchar(50),
 National_number int unique ,
 social_status nvarchar(50),
 Career nvarchar(50),
@@ -79,7 +91,7 @@ Birth_Date date,
 National_number int unique ,
 Acount nvarchar(50),
 Emp_Type nvarchar(50),
-Qualificationsþ nvarchar(max),
+QualificationsÃ¾ nvarchar(max),
 social_status nvarchar(50),
 Family_mamber  int 
 )
