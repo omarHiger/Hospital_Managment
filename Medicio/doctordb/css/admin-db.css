@@ -43,7 +43,7 @@ footer.sticky-footer {
     height: 85px;
     width: 350px;
     position: relative;
-    right: -257px;
+    right: -245px;
     top: 109px;
     border-radius: 17px;
     transition: 0.5s;
@@ -55,7 +55,7 @@ footer.sticky-footer {
     width: 350px;
     border-radius:  17px;
     position: relative;
-    left: 268px;
+    left: 264px;
     top: 109px;
     transition: 0.5s;
     font-size: 20px;
@@ -111,11 +111,26 @@ footer.sticky-footer {
    .close_btn:hover{
     background-color: #77858a;
     border-color:#77858a;
-    transition: 0.4s;
+    transition: 0.5s;
     
-    transform: scale(1.07);
+    transform: scale(1.08);
     box-shadow: 0 0 10px 1px rgb(151, 150, 150);
    }
+
+   .Logout-btn{
+    background-color: #3fbbc0;
+    border-color: #3fbbc0;
+    border-radius: 8px;
+   }
+   .Logout-btn:hover{
+    background-color: #3fbbc0;
+    border-color:#3fbbc0;
+    transition: 0.5s;
+    
+    transform: scale(1.08);
+    box-shadow: 0 0 10px 1px rgb(151, 150, 150);
+   }
+
    
    /*Start table*/
    
