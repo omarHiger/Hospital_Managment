@@ -130,6 +130,9 @@ create table Payments
 
 create table Medical_Details_External_Records
 (
+        --I have Found an error!!! 
+	--data type is invalid for use as a primary key column
+	-- by huda (!!!!!تحت جناحي)
 	External_Records nvarchar(max),
 	constraint Medical_Details_Examenation_Records_PK primary key (External_Records)
 )
@@ -146,7 +149,7 @@ Special_Needs nvarchar(max),
 Chronic_diseases nvarchar(max),
 External_Records nvarchar(max),
 constraint Medical_Details_Examenation_Records_FK foreign key (Examenation_Records) references  Medical_Details_External_Records(External_Records),
-constraint Previews_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID),
+constraint Medical_Details_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID),
 )
 
 create table Medical_tests
