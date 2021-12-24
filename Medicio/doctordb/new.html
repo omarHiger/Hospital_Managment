@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../doctordb/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
+    <link
+      href="../assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+        
+        <link href="../doctordb/css/new.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+        
+  <div class="sidebar">
+    <div class="logo-details">
+     <img src="../assets/img/avatar/doctor.jpg " class="doctor-img ">
+      <span class="logo_name">طبيب</span>
+    </hr>
+    </div>
+    <div class="nav-links">
+
+    <div class="f_div">
+        <a href="#">
+            <i class="bi bi-calendar-week"></i>
+            <span class="side_name">مواعيد</span>
+        </a>
+        <i class="bi bi-chevron-compact-up"></i>
+    </div>
+    <ul class="m_menu">
+        <li><a href="#">حجز موعد</a></li>
+        <li><a href="#"> الغاء حجز موعد </a></li>
+    </ul>
+
+    <div class="s_div">
+        <a href="#" data-toggle="modal" data-target="#exampleModal2"
+      >
+            <i class="fa fa-wheelchair"></i>
+            <span class="side_name">مرضى</span>
+        </a>
+       
+    </div>
+
+
+    <div class="l_div">
+        <a href="#">
+            <i class="fa fa-bed"></i>
+            <span class="side_name">عمليات</span>
+        </a>
+        <i class="bi bi-chevron-compact-up"></i>
+    </div>
+    <ul class="s_menu">
+        <li><a href="#">حجز عملية</a></li>
+        <li><a href="#"> الغاء حجز عملية </a></li>
+    </ul>
+
+
+</div>
+     
+  </div>
+  
+  <section class="home-section">
+  
+         <!-- Topbar -->
+        
+            <div class="container navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow topbar-ps ">
+                <div class="row">
+            
+        <ul class="navbar-nav ml-auto">
+      <!-- Nav Item - Alerts -->
+      <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell fa-fw"></i>
+            <!-- Counter - Alerts -->
+            <span class="badge badge-danger badge-counter">3+</span>
+        </a>
+        <!-- Dropdown - Alerts -->
+        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="alertsDropdown">
+            <h6 class="dropdown-header">
+                Alerts Center
+            </h6>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                        <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                        <i class="fas fa-donate text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                </div>
+            </a>
+            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+        </div>
+    </li>
+   
+  
+    <div class="topbar-divider d-none d-sm-block"></div>
+
+        
+
+    <!-- Nav Item - User Information -->
+    <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small">طبيب</span>
+            <img class="img-profile rounded-circle"
+                src="../doctordb/img/undraw_profile.svg">
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                المعلومات الشخصية
+            </a>
+            
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                تسجيل خروج
+            </a>
+        </div>
+    </li>
+
+</ul>
+</div>
+</div>
+   
+       
+        <div class="container ">
+            <div class="row">
+
+        <button type="button" class="btn modal-bt1 " data-toggle="modal" data-target="#exampleModal1">
+            مواعيد
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title modal-txt" id="exampleModalLabel1">موعد</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body Center">
+            
+                        <button type="button" class="btn btn-info  modal-bt4 " >
+                            حجز موعد
+                        </button>
+                        <button type="button" class="btn btn-info  modal-bt4" >
+                            إلغاء حجز موعد 
+                        </button>
+                
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary close_btn" data-dismiss="modal">إغلاق</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Logout Modal-->
+    <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title modal-txt" id="exampleModalLabel">تسجيل خروج</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body "> هل أنت متأكد</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close_btn" type="button" data-dismiss="modal">إلغاء</button>
+                <a class="btn btn-primary Logout-btn" href="../logindoctor/logindoctor.html">تسجيل خروج</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                            <!-- Button trigger modal -->
+        <button type="button" class="btn   modal-bt1 " data-toggle="modal" data-target="#exampleModal2">
+            المرضى
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title modal-txt" id="exampleModalLabel2">المرضى</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary close_btn" data-dismiss="modal">إغلاق</button>
+            
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+
+
+                                                                    <!-- Button trigger modal -->
+            <button type="button" class="btn modal-bt1" data-toggle="modal" data-target="#exampleModal3">
+                العمليات
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade " id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title modal-txt " id="exampleModalLabel3">عملية </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body Center ">
+                    
+                            <button type="button" class="btn btn-info  modal-bt4" >
+                                حجز غرفة عمليات
+                            </button>
+                            <button type="button" class="btn btn-info  modal-bt4" >
+                                إلغاء حجز غرفة 
+                            </button>
+                        
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary close_btn" data-dismiss="modal">إغلاق</button>
+                
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="container">
+        <div class="row">
+        <table class="D_table table">
+            <!-- <thead>
+              <tr>
+                <th id="M">مواعيد المعاينات</th>
+                <th id="A">العمليات</th>
+                <th>#</th>
+              </tr>
+            </thead> -->
+
+            <tbody>
+              <tr>
+                <td>
+                  اسم المريض : سالم المصري<br />
+                  الساعة : 9:00 صباحاً<br />
+                </td>
+                <td>
+                    اسم المريض : سالم المصري<br />
+                    الساعة : 9:00 صباحاً<br />
+                  </td>
+                  <td>
+                    اسم المريض : سالم المصري<br />
+                    الساعة : 9:00 صباحاً<br />
+                  </td>
+                <td>
+                  رقم الغرفة: 10 , اسم المريض : شادي هلال<br />
+                  الساعة : 10:45 صباحاً<br />
+                </td>
+
+                <th>الأحد</th>
+              </tr>
+
+              <tr>
+                <td>
+                  اسم المريض : وسام العلي<br />
+                  الساعة : 9:15 صباحاً<br />
+                </td>
+                <td>
+                    اسم المريض : وسام العلي<br />
+                    الساعة : 9:15 صباحاً<br />
+                  </td>
+                  <td>
+                    اسم المريض : وسام العلي<br />
+                    الساعة : 9:15 صباحاً<br />
+                  </td>
+                <td>
+                  رقم الغرفة: 7 , اسم المريض : مريم سعاد<br />
+                  الساعة : 11:30 صباحاً<br />
+                </td>
+                <th>الأثنين</th>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+        
+        <footer >
+            <div class="footer">
+              <span class="fo_span center">Copyright © our Website 2021</span>
+            </div>
+       
+        </footer>
+     
+      
+  </section>
+  
+
+
+
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+
+   
+    <script src="../doctordb/vendor/jquery/jquery.min.js"></script>
+    <script src="../doctordb/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../doctordb/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../doctordb/js/sb-admin-2.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../doctordb/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../doctordb/js/demo/chart-area-demo.js"></script>
+    <script src="../doctordb/js/demo/chart-pie-demo.js"></script>
+</body>
+</html>
