@@ -29,18 +29,52 @@
       <span class="logo_name">طبيب</span>
     </hr>
     </div>
-    <div class="nav-links">
+    <ul class="nav-link">
+        <li>
+            <div class="icon-link">
+                <a href="#"><i class="bi bi-calendar-week"></i>
+                    <span class="link_name">مواعيد</span>
+                    </a>
+                    <i class="bi bi-chevron-compact-up arrow"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">مواعيد</a></li>
+                <li><a href="#">حجز موعد</a></li>
+                <li><a href="#">الغاء حجز</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-wheelchair"></i>
+            <span class="link_name">مرضى</span>
+            </a>
+        </li>
+        <li>
+            <div class="icon-link">
+            <a href="#"><i class="fa fa-bed"></i>
+            <span class="link_name">عمليات</span>
+            </a>
+            <i class="bi bi-chevron-compact-up arrow"></i> 
+        </div>
+        <ul class="sub-menu">
+            <li><a class="link_name" href="#"> عمليات</a></li>
+            <li><a href="#">حجز غرفة</a></li>
+            <li><a href="#"> الغاء حجز غرفة</a></li>
+        </ul>
+        </li>
+    </ul>
+    <!-- <div class="nav-links">
 
     <div class="f_div">
         <a href="#">
             <i class="bi bi-calendar-week"></i>
             <span class="side_name">مواعيد</span>
         </a>
-        <i class="bi bi-chevron-compact-up"></i>
+        <i class="bi bi-chevron-compact-up icon"></i>
     </div>
     <ul class="m_menu">
+        <span>مواعيد</span>
         <li><a href="#">حجز موعد</a></li>
-        <li><a href="#"> الغاء حجز موعد </a></li>
+        <li><a href="#"> الغاء حجز  </a></li>
     </ul>
 
     <div class="s_div">
@@ -58,16 +92,17 @@
             <i class="fa fa-bed"></i>
             <span class="side_name">عمليات</span>
         </a>
-        <i class="bi bi-chevron-compact-up"></i>
+        <i class="bi bi-chevron-compact-up icon"></i>
     </div>
     <ul class="s_menu">
-        <li><a href="#">حجز عملية</a></li>
-        <li><a href="#"> الغاء حجز عملية </a></li>
+        <span>عمليات</span>
+        <li><a href="#">حجز غرفة</a></li>
+        <li><a href="#"> الغاء حجز غرفة </a></li>
     </ul>
 
 
 </div>
-     
+      -->
   </div>
   
   <section class="home-section">
@@ -353,15 +388,25 @@
 
 
   <script>
-   let sidebar = document.querySelector(".sidebar");
-let sidebarBtn = document.querySelector(".sidebarBtn");
-sidebarBtn.onclick = function() {
-  sidebar.classList.toggle("active");
-  if(sidebar.classList.contains("active")){
-  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-}else
-  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+//    let sidebar = document.querySelector(".sidebar");
+// let sidebarBtn = document.querySelector(".sidebarBtn");
+//   sidebarBtn.onclick = function() {
+//   sidebar.classList.toggle("active");
+//   if(sidebar.classList.contains("active")){
+//   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+// }else
+//   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+// }
+
+let icon = document.querySelectorAll(".icon");
+for(var i =0;i<icon.length;i++){
+    icon[i].addEventListener("click",(e)=>{
+        let iconParent = e.target.parentElement.parentElement;
+        console.log(iconParent);
+        iconParent.classList.toggle("showMenu");
+    });
 }
+
  </script>
 
    
@@ -375,7 +420,8 @@ sidebarBtn.onclick = function() {
     <script src="../doctordb/js/sb-admin-2.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../doctordb/vendor/chart.js/Chart.min.js"></script>
+    <!-- <script src="../doctordb/vendor/chart.js/Chart.min.js"></script> -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="../doctordb/js/demo/chart-area-demo.js"></script>
