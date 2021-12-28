@@ -7,8 +7,8 @@ Street nvarchar(50),
 Area nvarchar(50),
 Mgr_Id int,
 constraint HO_SerialNumber_PK primary key (SerialNumber),
-constraint hospital_Mgr_Id_FK foreign key (Mgr_Id) references Doctor(Do_Id)
 )
+
 create table HO_Phone(
   HO_Phone nvarchar(10),
   Ho_SerialNumber int ,
@@ -33,10 +33,11 @@ social_status nvarchar(50),
 Family_mamber  int ,
 Specialization nvarchar(50),
 Qualificationsþ nvarchar(50),  
-Manager_ID int ,
 constraint DO_ID_PK primary key (Do_ID),
-constraint Do_Manager_ID_FK foreign key (Manager_ID) references  doctor(Do_ID)
 )
+ALTER TABLE hospital
+ADD constraint hospital_Mgr_Id_FK FOREIGN KEY (Mgr_Id) REFERENCES Doctor(Do_Id);
+
 
 create table Doctor_Phone_number
 (
@@ -46,14 +47,6 @@ create table Doctor_Phone_number
 	constraint Doctor_Phone_number_DO_ID_FK foreign key (DO_Id) references  doctor(Do_ID)
 )
 
-create table Do_Work_HO
-(
-	Do_Id int,
-	SerialNumber int,
-	constraint Do_Work_HO_PK primary key (SerialNumber,Do_Id),
-	constraint Do_Work_HO_DO_ID_FK foreign key (DO_Id) references  doctor(Do_ID),
-	constraint Do_Work_HO_SerialNumber_FK foreign key (SerialNumber) references  hospital(SerialNumber)
-)
 create table Patient
 (
 Pa_ID int,
@@ -66,12 +59,12 @@ Area nvarchar(50),
 X_Y geography,
 Gender nvarchar(50),
 Birth_Date date,
+Birth_Place nvarchar(max),
+social_status nvarchar(50),
+Career nvarchar(50),
 Email nvarchar(50),
 Password nvarchar(50),
 National_number int unique ,
-social_status nvarchar(50),
-Career nvarchar(50),
-Birth_Place nvarchar(max),
 Ho_SerialNumber int,
 constraint Pa_ID_PK primary key (Pa_ID),
 constraint Patient_HO_SerialNumber_FK foreign key (Ho_SerialNumber) references  hospital(SerialNumber)
@@ -128,18 +121,12 @@ create table Payments
 	constraint Payments_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID),
 )
 
-create table Medical_Details_External_Records
-(
-        --I have Found an error!!! 
-	--data type is invalid for use as a primary key column
-	-- by huda (!!!!!تحت جناحي)
-	External_Records nvarchar(max),
-	constraint Medical_Details_Examenation_Records_PK primary key (External_Records)
-)
+
 
 create table Medical_Details
 (
 Pa_Id int,
+Pa_Name nvarchar(50),
 Examenation_Records nvarchar(max),
 Blood_type nvarchar(5),
 Treatment_plans_Daily_supplements nvarchar(max),
@@ -148,7 +135,7 @@ Family_Health_History nvarchar(max),
 Special_Needs nvarchar(max),
 Chronic_diseases nvarchar(max),
 External_Records nvarchar(max),
-constraint Medical_Details_Examenation_Records_FK foreign key (Examenation_Records) references  Medical_Details_External_Records(External_Records),
+constraint Medical_Details_PK primary key (Pa_Id,Pa_Name),
 constraint Medical_Details_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID),
 )
 
@@ -178,8 +165,10 @@ create table Department
 Dept_ID int,
 Dept_name nvarchar(50),
 Ho_SerialNumber int ,
+Mgr_Id int,
 constraint Department_PK primary key (Dept_ID),
 constraint Department_HO_SerialNumber_FK foreign key (Ho_SerialNumber) references  hospital(SerialNumber),
+constraint Department_Mgr_Id_FK FOREIGN KEY (Mgr_Id) REFERENCES Doctor(Do_Id)
 )
 
 create table Employee
@@ -213,16 +202,6 @@ create table Emp_Phone_number
 	constraint Emp_Phone_number_Emp_ID_FK foreign key (Emp_Id) references  Employee(Emp_Id) 
 )
 
-
-create table Do_Workin_Dept -- we'll think about this again!!!
-(
-	Dept_Id int,
-	Do_Id int,
-	constraint Do_Workin_Dept_PK primary key (Dept_ID,Do_Id),
-	constraint Do_Workin_Dept_DO_ID_FK foreign key (DO_Id) references  doctor(Do_ID),
-	constraint Do_Workin_Dept_Dept_Id_FK foreign key (Dept_Id) references  Patient(Pa_ID),
-)
-
 create table Room
 (
 Room_ID int,
@@ -238,6 +217,8 @@ create table Room_Reservation
 	Room_Id int,
 	Reservation_Date smalldatetime,
 	Reservation_EndDate smalldatetime,
+
+	constraint Room_Reservation_PK primary key (Room_Id,Pa_Id),
 	constraint Room_Reservation_Pa_Id_FK foreign key (Pa_Id) references  Patient(Pa_ID),
 	constraint Room_Reservation_Room_Id_FK foreign key (Room_Id) references  Room(Room_ID),
 
