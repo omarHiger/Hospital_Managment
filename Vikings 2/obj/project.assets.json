@@ -7105,11 +7105,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Vikings 2\\Vikings 2.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\OurProject\\Hospital_Managment\\Vikings 2\\Vikings 2.csproj",
       "projectName": "Vikings 2",
-      "projectPath": "C:\\Users\\ASUS\\Desktop\\Vikings 2\\Vikings 2.csproj",
+      "projectPath": "C:\\Users\\ASUS\\Desktop\\OurProject\\Hospital_Managment\\Vikings 2\\Vikings 2.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Desktop\\Vikings 2\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\Desktop\\OurProject\\Hospital_Managment\\Vikings 2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\ViKings\\ViKings.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\OurProject\\Hospital_Managment\\ViKings\\ViKings.csproj",
       "projectName": "ViKings",
-      "projectPath": "C:\\Users\\ASUS\\Desktop\\ViKings\\ViKings.csproj",
+      "projectPath": "C:\\Users\\ASUS\\Desktop\\OurProject\\Hospital_Managment\\ViKings\\ViKings.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Desktop\\ViKings\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\Desktop\\OurProject\\Hospital_Managment\\ViKings\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

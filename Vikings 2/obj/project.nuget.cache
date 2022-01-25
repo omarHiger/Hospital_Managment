@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J7o429d3AwpzT7lrSnN853pYkz69bsVkyaeZNqdL9l6n4AmcFaExYruyDzcfbwZ6xidWo37X3GSUYhPefcx7gw==",
+  "dgSpecHash": "u0Bpz3rNXgR/t9bW/TG1f5qaNdGUthJcDEBuhe6PFZ/9Bxf1qJYod5ge9x4koS67qMScHiW4R9XbJLPRcTvvog==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\Vikings 2\\Vikings 2.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\OurProject\\Hospital_Managment\\Vikings 2\\Vikings 2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
