@@ -1,7 +1,7 @@
 --email= fullName		password= nationalNumber
 create table hospital(
-	Ho_Id int,
-	Serial_Number nvarchar(100) ,
+	Ho_Id int identity(111111,1),
+	Serial_Number nvarchar(100) not null,  -- added not null" -Huda
 	Ho_Name nvarchar(50) not null,
 	City nvarchar(50) not null,
 	Street nvarchar(50) not null,
@@ -12,7 +12,6 @@ create table hospital(
 	constraint HO_Serial_Number_PK primary key (Ho_Id),
 	constraint hospital_Mgr_Id_FK FOREIGN KEY (Mgr_Id) REFERENCES Doctor(Do_Id)
 )
-
 create table HO_Phone(
 	HO_Phone nvarchar(10),
 	Ho_Id int ,
@@ -21,24 +20,24 @@ create table HO_Phone(
 	constraint Ho_Phone_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id)
 )
 create table Doctor(
-	Do_ID int identity(111111,1),
+	Do_ID int identity(111111,1), --Added "identity" -Huda
 	First_Name nvarchar(30) not null,
 	Middle_Name nvarchar(30) not null,
 	Last_Name  nvarchar(30) not null,
 	Email nvarchar(100) not null,
 	[Password] nvarchar(25) not null constraint check_Doctor_Password check([Password]>7),
-	Gender nvarchar(6) default('single'),
+	Gender nvarchar(6) , --removed "default('single')" and added it in "social_status" instead -Huda
 	Date_of_hiring date not null,
 	Birth_Date date not null,
-	National_number nvarchar(25) not null unique,
+	National_number nvarchar(25) not null, --removed "unique" -Huda
 	City nvarchar(50),
 	Street nvarchar(50),
 	Area nvarchar(50),
-	social_status nvarchar(10),
+	social_status nvarchar(10) default('single'), --added "default('single')" -Huda
 	Family_mamber  int ,
 	Specialization nvarchar(50) not null,
 	Qualifications nvarchar(max),  
-	Career nvarchar(255),
+	--Career nvarchar(255),
 	Birth_Place nvarchar(100),
 	Dept_Id int not null,
 
@@ -52,18 +51,18 @@ create table Doctor_Phone_number(
 	Do_Id int,
 
 	constraint Doctor_Phone_number_PK primary key (Do_Phone,Do_Id),
-	constraint Doctor_Phone_number_DO_ID_FK foreign key (DO_Id) references  doctor(Do_ID)
+	constraint Doctor_Phone_number_DO_ID_FK foreign key (DO_Id) references  Doctor(Do_ID)
 )
 
 create table Patient(
-	Pa_ID int,
+	Pa_ID int identity(111111,1), --Added "identity" -Huda
 	First_Name nvarchar(30) not null, 
 	Middle_Name nvarchar(30)not null,
 	Last_Name  nvarchar(30)not null,
 	City nvarchar(50) not null,
 	Street nvarchar(50) not null,
 	Area nvarchar(50) not null,
-	X_Y decimal(40,20),
+	X_Y decimal(38,20), --"decimal(40,20)" ---->> "decimal(38,20)" -Huda
 	Gender nvarchar(6),
 	Birth_Date date not null,
 	Birth_Place nvarchar(100),
@@ -97,7 +96,7 @@ create table Patient_Phone_number(
 )
 
 create table Preview(
-	Pre_Id int identity(1,1),
+	Pre_Id int identity(1,1), --Added "identity" -Huda
 	Previews_Date smalldatetime,
 	DO_Id int,
 	Pa_ID int,
@@ -108,7 +107,7 @@ create table Preview(
 )
 
 create table Bill(
-	Bill_Id int,
+	Bill_Id int identity(1,1), --Added "identity" -Huda
 	Pa_Id int,
 	Examinations decimal,
 	Surgeries decimal,
@@ -137,7 +136,7 @@ create table Medical_Detail(
 )
 
 create table Medical_tests(
-	Test_Id int,
+	Test_Id int identity(1,1), --Added "identity" -Huda
 	Pa_Id int,
 	Test_Type nvarchar(60) not null,
 	Test_Result nvarchar(50) not null,
@@ -148,7 +147,7 @@ create table Medical_tests(
 )
 
 create table Ray(
-	Ray_Id int,
+	Ray_Id int identity(1,1), --Added "identity" -Huda
 	Pa_Id int,
 	Ray_Type nvarchar(60)not null,
 	Ray_Result nvarchar(50)not null,
@@ -158,7 +157,7 @@ create table Ray(
 )
 
 create table Department(
-	Dept_ID int,
+	Dept_ID int identity(111111,1), --Added "identity" -Huda
 	Dept_name nvarchar(50) not null,
 	Dept_Type nvarchar(50)not null,
 	Ho_Id int ,
@@ -170,7 +169,7 @@ create table Department(
 )
 
 create table Employee(
-	Emp_Id int,
+	Emp_Id int identity(111111,1), --Added "identity" -Huda
 	First_Name nvarchar(30) not null,
 	Middle_Name nvarchar(30) not null,
 	Last_Name  nvarchar(30)not null,
@@ -188,7 +187,7 @@ create table Employee(
 	Qualificationsþ nvarchar(max),
 	social_status nvarchar(20),
 	Family_member  int default(0),
-	Career nvarchar(255),
+	--Career nvarchar(255),
 	Ho_Id int,
 
 	constraint Employee_PK primary key (Emp_Id),
@@ -204,7 +203,7 @@ create table Emp_Phone_number(
 )
 
 create table Room(
-	Room_ID int,
+	Room_ID int identity(1,1), --Added "identity" -Huda
 	Room_type int not null,
 	Empity bit default(1) ,
 	Ho_Id int ,
@@ -212,7 +211,7 @@ create table Room(
 	constraint Room_HO_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id)
 )
 create table Room_Reservation(
-	Res_id int,
+	Res_id int identity(1,1), --Added "identity" -Huda
 	Pa_Id int not null,
 	Room_Id int not null,
 	Reservation_SDate smalldatetime not null,
@@ -224,7 +223,7 @@ create table Room_Reservation(
 
 )
 create table Surgery_Room(
-	Surgery_Room_ID int, 
+	Surgery_Room_ID int identity(1,1), --Added "identity" -Huda
 	Ready bit,
 	Ho_Id int,
 
@@ -233,7 +232,7 @@ create table Surgery_Room(
 )
 
 create table Surgery(
-	Surgery_number int,
+	Surgery_number int identity(1,1), --Added "identity" -Huda
 	Surgery_name nvarchar(50) not null,
 	Surgery_date smalldatetime not null,
 	Surgery_Room_ID int not null,
@@ -248,7 +247,7 @@ create table Surgery(
 )
 
 create table Death_Cases(
-	Death_Num int,
+	Death_Num int identity(1,1),  --Added "identity" -Huda
 	Pa_Id int unique not null,
 	Death_date date not null ,
 	Cause_death nvarchar(max) not null,
