@@ -1,4 +1,5 @@
---email= fullName		password= nationalNumber
+﻿--email= fullName		password= nationalNumber
+
 create table hospital(
 	Ho_Id int identity(111111,1),
 	Serial_Number nvarchar(100) not null,
@@ -10,14 +11,14 @@ create table hospital(
 	Subscibtion_Date date not null,
 
 	constraint HO_Serial_Number_PK primary key (Ho_Id),
-	constraint hospital_Mgr_Id_FK FOREIGN KEY (Mgr_Id) REFERENCES Doctor(Do_Id)
+	constraint hospital_Mgr_Id_FK FOREIGN KEY (Mgr_Id) REFERENCES Doctor(Do_Id) --get error when try delete it 
 )
 create table HO_Phone(
 	HO_Phone nvarchar(10),
 	Ho_Id int ,
 
 	constraint HO_Phone_PK primary key (Ho_Id,HO_Phone),
-	constraint Ho_Phone_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id)
+	constraint Ho_Phone_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id) on delete cascade
 )
 create table Doctor(
 	Do_ID int identity(111111,1), 
@@ -36,11 +37,11 @@ create table Doctor(
 	Specialization nvarchar(60) not null,
 	Qualifications nvarchar(max), 
 	Birth_Place nvarchar(100),
-	Dept_Id int not null,
+	Dept_Id int  null,
 
 
 	constraint DO_ID_PK primary key (Do_ID),
-	constraint Doctor_Dept_Id_FK FOREIGN KEY (Dept_Id) REFERENCES Department(Dept_ID)
+	constraint Doctor_Dept_Id_FK FOREIGN KEY (Dept_Id) REFERENCES Department(Dept_ID) on delete set null
 )
 
 create table Doctor_Phone_number(
@@ -48,7 +49,7 @@ create table Doctor_Phone_number(
 	Do_Id int,
 
 	constraint Doctor_Phone_number_PK primary key (Do_Phone,Do_Id),
-	constraint Doctor_Phone_number_DO_ID_FK foreign key (DO_Id) references  Doctor(Do_ID)
+	constraint Doctor_Phone_number_DO_ID_FK foreign key (DO_Id) references  Doctor(Do_ID)on delete cascade
 )
 
 create table Patient(
@@ -70,7 +71,7 @@ create table Patient(
 	Ho_Id int,
 
 	constraint Pa_ID_PK primary key (Pa_ID),
-	constraint Patient_HO_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id)
+	constraint Patient_HO_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id) on delete cascade
 )
 
 create table Patient_Phone_number(
@@ -78,7 +79,7 @@ create table Patient_Phone_number(
 	Pa_Id int,
 
 	constraint Patient_Phone_number_PK primary key (Pa_Phone,Pa_Id),
-	constraint Patient_Phone_number_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID) 
+	constraint Patient_Phone_number_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID) on delete cascade
 )
 
 create table Caring(
@@ -86,8 +87,8 @@ create table Caring(
 	Pa_Id int,
 
 	constraint Caring_PK primary key (Pa_Id,Do_Id),
-	constraint Caring_DO_ID_FK foreign key (DO_Id) references  doctor(Do_ID),
-	constraint Caring_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID),
+	constraint Caring_DO_ID_FK foreign key (DO_Id) references  doctor(Do_ID) on delete cascade, 
+	constraint Caring_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID) on delete cascade,
 )
 
 
@@ -95,12 +96,13 @@ create table Caring(
 create table Preview(
 	Pre_Id int, 
 	Previews_Date smalldatetime not null,
-	DO_Id int not null,
+	DO_Id int,
 	Pa_ID int not null,
+	Do_name nvarchar(90),
 
 	constraint Previews_PK primary key (Pre_Id),
-	constraint Previews_DO_ID_FK foreign key (DO_Id) references  doctor(Do_ID),
-	constraint Previews_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID),
+	constraint Previews_DO_ID_FK foreign key (DO_Id) references  doctor(Do_ID) on delete set null,
+	constraint Previews_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID) on delete cascade,
 )
 
 create table Bill(
@@ -113,7 +115,7 @@ create table Bill(
 	Rays decimal,
 
 	constraint Bill_PK primary key (Bill_Id),
-	constraint Bill_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_Id),
+	constraint Bill_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_Id)on delete cascade,
 )
 
 create table Medical_Detail(
@@ -129,7 +131,7 @@ create table Medical_Detail(
 	External_Records nvarchar(max),
 
 	constraint Medical_Detail_PK primary key (Pa_Id,Pa_Name),
-	constraint Medical_Detail_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID),
+	constraint Medical_Detail_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID)on delete cascade,
 )
 
 create table Medical_tests(
@@ -140,7 +142,7 @@ create table Medical_tests(
 	Test_Date date not null,
 
 	constraint Medical_tests_PK primary key (Test_Id),
-	constraint Medical_tests_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID),
+	constraint Medical_tests_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID) on delete cascade,
 )
 
 create table Ray(
@@ -150,7 +152,7 @@ create table Ray(
 	Ray_Result nvarchar(50)not null,
 	Ray_Date date not null
 	constraint Ray_PK primary key (Ray_Id),
-	constraint Ray_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID),
+	constraint Ray_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID)on delete cascade,
 )
 
 create table Department(
@@ -161,8 +163,8 @@ create table Department(
 	Dept_Mgr_Id int,
 
 	constraint Department_PK primary key (Dept_ID),
-	constraint Department_HO_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id),
-	constraint Department_Mgr_Id_FK FOREIGN KEY (Dept_Mgr_Id) REFERENCES Doctor(Do_Id)
+	constraint Department_HO_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id)on delete cascade,
+	constraint Department_Mgr_Id_FK FOREIGN KEY (Dept_Mgr_Id) REFERENCES Doctor(Do_Id) on delete set null,
 )
 
 create table Employee(
@@ -188,7 +190,7 @@ create table Employee(
 	Ho_Id int,
 
 	constraint Employee_PK primary key (Emp_Id),
-	constraint Employee_Dept_ID_FK foreign key (Ho_Id) references  Hospital(Ho_Id),
+	constraint Employee_Dept_ID_FK foreign key (Ho_Id) references  Hospital(Ho_Id) on delete cascade,
 )
 
 create table Emp_Phone_number(
@@ -196,52 +198,58 @@ create table Emp_Phone_number(
 	Emp_Id int,
 
 	constraint Emp_Phone_number_PK primary key (Emp_Phone,Emp_Id),
-	constraint Emp_Phone_number_Emp_ID_FK foreign key (Emp_Id) references  Employee(Emp_Id) 
+	constraint Emp_Phone_number_Emp_ID_FK foreign key (Emp_Id) references  Employee(Emp_Id) on delete cascade,
 )
 
 create table Room(
 	Room_ID int,
+	Room_Number nvarchar(20) not null	,
 	Room_type int not null constraint Room_Type_check check(Room_Type between 0 and 10),
+	[floor] int not null,
 	Empity bit default(1) ,
 	Ho_Id int,
 
 	constraint Room_Room_Id_PK primary key (Room_Id),
-	constraint Room_HO_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id)
+	constraint Room_HO_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id)on delete cascade,
 )
 create table Room_Reservation(
 	Res_id int,
 	Pa_Id int not null,
 	Room_Id int not null,
+	Room_Number nvarchar(20),
 	Reservation_SDate smalldatetime not null,
 	Reservation_EDate smalldatetime,
 
 	constraint Room_Reservation_PK primary key (Res_id),
-	constraint Room_Reservation_Pa_Id_FK foreign key (Pa_Id) references  Patient(Pa_ID),
-	constraint Room_Reservation_Room_Id_FK foreign key (Room_Id) references  Room(Room_ID),
+	constraint Room_Reservation_Pa_Id_FK foreign key (Pa_Id) references  Patient(Pa_ID) on delete cascade,
+	constraint Room_Reservation_Room_Id_FK foreign key (Room_Id) references  Room(Room_ID) on delete set null,
 
 )
 create table Surgery_Room(
 	Surgery_Room_ID int,
+	Surgery_Room_Number nvarchar(20) not null,
+	Surgery_Room_Floor int not null,
 	Ready bit,
 	Ho_Id int not null,
 
 	constraint Surgery_Room_PK primary key (Surgery_Room_ID),
-	constraint Surgery_Room_HO_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id)
+	constraint Surgery_Room_HO_Serial_Number_FK foreign key (Ho_Id) references  hospital(Ho_Id) on delete cascade,
 )
 
 create table Surgery(
 	Surgery_number int,
 	Surgery_name nvarchar(50) not null,
 	Surgery_date smalldatetime not null,
-	Surgery_Room_ID int not null,
+	Do_name nvarchar(90),
+	Surgery_Room_ID int ,
 	Surgery_Time int not null,
 	Pa_ID int not null,
 	Do_ID int,
 
 	constraint Surgery_PK primary key (Surgery_number),
-	constraint Surgery_DO_ID_FK foreign key (DO_Id) references  doctor(Do_ID),
-	constraint Surgery_Pa_Id_FK foreign key (Pa_Id) references  Patient(Pa_ID),
-	constraint Surgery_Surgery_Room_ID_FK foreign key (Surgery_Room_ID) references  Surgery_Room(Surgery_Room_ID),
+	constraint Surgery_DO_ID_FK foreign key (DO_Id) references  doctor(Do_ID) on delete set null,
+	constraint Surgery_Pa_Id_FK foreign key (Pa_Id) references  Patient(Pa_ID) on delete cascade,
+	constraint Surgery_Surgery_Room_ID_FK foreign key (Surgery_Room_ID) references  Surgery_Room(Surgery_Room_ID) on delete set null,
 )
 
 create table Death_Cases(
@@ -250,7 +258,7 @@ create table Death_Cases(
 	Death_date date not null ,
 	Cause_death nvarchar(max) not null,
 	constraint Deat_Cases_DeathNum_PK primary key(Death_Num), 
-	constraint Death_Cases_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID),
+	constraint Death_Cases_Pa_ID_FK foreign key (Pa_Id) references  Patient(Pa_ID) on delete cascade,
 )
 
 create table [Admin](
