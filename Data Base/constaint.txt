@@ -1,0 +1,37 @@
+Hospital: mgr -----> restrict
+
+all phone_Number -----> cascade
+
+patient: Ho_Id ------> cascade
+
+Caring: Do_Id/ Pa_Id -----> cascade
+
+Preview : Do_Id ------> add attribute: doctor's name and set null for Do_Id
+	  Pa_Id -----> cascade
+
+Bill: Pa_Id ----> cascade
+
+Medical_Details / Medical_Test / Ray: Pa_Id -----> cascade
+
+Doctor: dept_Id -----> set null
+
+Department : Ho-Id -----> cascade
+Department: Dept_Mgr_Id ------> set null
+
+Room / surgeryRoom: Ho_id Cascade
+Reservation: pa_Id -----> cascade
+	     Room_id ----> set null  add attribute: Room_Number
+
+Surgery: Do_Id ------> add attribute: doctor's name and set null for Do_Id
+	 Pa_Id -----> cascade
+	 Su_room_id ------> set null
+
+Death_cases: Pa_Id -----> cascade
+
+Employee: Ho_Id -----> cascade
+
+	     
+
+
+
+
