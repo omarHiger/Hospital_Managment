@@ -1,0 +1,169 @@
+﻿@model IEnumerable<LastHMS1.Models.Hospital>
+@{
+    ViewData["Title"] = "Admin<3";
+}
+
+
+<!-- sidebar start-->
+<div class="sidebar">
+    <div class="logo">
+        <img src="~/Vikings/Admin/admin.jpg" class="doctor-img" />
+        <span class="logo_name">مشرف</span>
+    </div>
+    <hr class="sidebar-divider" />
+    <div class="nav-links">
+        <div class="f_div">
+            <a asp-controller="Doctor" asp-action="CreateManager">
+                <span class="side_name"><i class="fas fa-hospital-user"></i> إضافة مشفى</span>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- sidebar end -->
+<!-- start  -->
+<section class="home-section">
+    <!-- start Topbar -->
+    <div class=" container navbar navbar-expand navbar-light bg-white topbar mb-4 static-top hadow  topbar-ps">
+        <div class="row">
+            <ul class="navbar-nav ml-auto">
+
+                <!-- Nav Item -admin info -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle do_div" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="info-d">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">مشرف</span>
+                            <img class="img-profile rounded-circle" src="~/Vikings/Admin/undraw_profile_2.svg" />
+                        </div>
+                    </a>
+
+                    <!--admin info dropdown  -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in info-doc" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            المعلومات الشخصية
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            تسجيل خروج
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end Topbar -->
+    <!--logout modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title modal-txt" id="exampleModalLabel">
+                        تسجيل خروج
+                    </h5>
+                    <button class="close close_x" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">هل أنت متأكد</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary close_btn" type="button" data-dismiss="modal">
+                        إلغاء
+                    </button>
+                    <a class="btn btn-primary Logout-btn" href="../../login/Loginadmin/loginadmin.html">تسجيل خروج</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- start page -->
+    <div class="container">
+        <div class="row">
+            <a class="col-lg-6" asp-controller="Doctor" asp-action="CreateManager">
+                <button type="button" class="btn modal-bt1"> إضافة مشفى</button>
+            </a>
+        </div>
+    </div>
+    <!-- table start -->
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Serial_Number)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ho_Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ho_Subscribtion_Date)
+                        </th>
+                   
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Serial_Number)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ho_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ho_Subscribtion_Date)
+                            </td>
+                   
+                            <td>
+                                <a asp-controller="Hospital" asp-action="Edit" asp-route-id="@item.Ho_Id">Edit</a> |
+                                <a asp-controller="Hospital" asp-action="Details" asp-route-id="@item.Ho_Id">Details</a> |
+                                <a asp-controller="Hospital" asp-action="Delete" asp-route-id="@item.Ho_Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <!-- table end -->
+    <!-- end page -->
+</section>
+<!-- end  -->
+<!-- start footer-->
+<footer>
+    <div class="footer">
+        <span class="fo_span">
+            حقوق الطباعة &copy; موقعنا 2022
+        </span>
+    </div>
+</footer>
+<!-- end footer-->
+@section Scripts {
+    <script src="~/Vikings/Admin/jquery.min.js"></script>
+    <script src="~/Vikings/Admin/bootstrap.bundle.min.js"></script>
+    <script src="~/Vikings/Admin/jquery.easing.min.js"></script>
+    <script src="~/Vikings/Admin/sb-admin-2.js"></script>
+    <script src="~/Vikings/Admin/Chart.min.js"></script>
+    <script src="~/Vikings/Admin/chart-area-demo.js"></script>
+    <script src="~/Vikings/Admin/chart-pie-demo.js"></script>
+}
+
+@section Styles {
+    <style>
+        html {
+            direction: rtl
+        }
+    </style>
+    <link href="~/Vikings/Admin/all.css" rel="stylesheet" />
+    <link href="~/Vikings/Admin/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Vikings/Admin/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"><!-- font -->
+    <link href="~/Vikings/Admin/admin.css" rel="stylesheet" />
+
+}

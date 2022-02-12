@@ -1,0 +1,165 @@
+﻿@model LastHMS1.Models.Employee
+@{
+    ViewData["Title"] = "IT";
+}
+
+<!-- sidebar start -->
+<div class="sidebar">
+    <div class="logo-details">
+        <img src="../../assets/img/avatar/admin.jpg " class="it-img ">
+        <span class="logo_name">تقاني</span>
+    </div>
+    <hr class="sidebar-divider">
+    <div class="nav-links ">
+        <div class="f_div">
+            <a asp-controller="Room" asp-action="Create" asp-route-id="@Model.Ho_Id">
+                <i class="bi bi-door-open"></i> <span class="side_name"> عرض غرفة </span>
+            </a>
+        </div>
+        <div class="s_div">
+            <a asp-controller="Department" asp-action="HoDepartments" asp-route-id="@Model.Ho_Id">
+                <i class="bi bi-menu-button-wide-fill"></i>
+                <span class="side_name">عرض أقسام</span>
+            </a>
+        </div>
+        <div class="s_div">
+            <a>
+                <i class="bi bi-person-x"></i>
+                <span class="side_name"> حظر مستخدم</span>
+            </a>
+        </div>
+        <div class="s_div">
+            <a asp-controller="Employee" asp-action="HoEmployees" asp-route-id="@Model.Ho_Id">
+                <i class="bi bi-person"></i>
+                <span class="side_name"> عرض الموظفين </span>
+            </a>
+        </div>
+    </div>
+    <hr class="sidebar-divider ">
+</div>
+<!-- sidebar end -->
+<!-- start -->
+<section class="home-section">
+
+    <!-- Topbar start -->
+
+    <div class="container navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow topbar-ps ">
+        <div class="row">
+            <ul class="navbar-nav ml-auto">
+                <!-- it Info start -->
+                <li class="nav-item dropdown no-arrow ">
+                    <a class="nav-link dropdown-toggle do_div" href="#" id="userDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">تقاني</span>
+                        <img class="img-profile rounded-circle"
+                             src="../img/undraw_profile.svg">
+                    </a>
+
+                    <!-- it Info Dropdown start -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in info-it"
+                         aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;&nbsp;
+                            المعلومات الشخصية
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;&nbsp;
+                            تسجيل خروج
+                        </a>
+                    </div>
+                    <!-- it Info Dropdown end -->
+                </li>
+
+                <!-- it Info end -->
+            </ul>
+        </div>
+    </div>
+    <!-- Logout Modal start-->
+    <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" dir="ltr">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title modal-txt" id="exampleModalLabel">تسجيل خروج</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body "> هل أنت متأكد</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary close_btn" type="button" data-dismiss="modal">إلغاء</button>
+                    <a class="btn btn-primary Logout-btn" asp-controller="Home" asp-action="Index">تسجيل خروج</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Logout Modal end-->
+    <!-- Topbar end -->
+    <!-- start page -->
+
+    <div class="container ">
+        <div class="row">
+
+            <!-- room-add btn -->
+            <a asp-controller="Room" asp-action="Create" asp-route-id="@Model.Ho_Id">
+
+                <button type="button" class="btn   modal-bt1">
+                    عرض غرفة
+                </button>
+            </a>
+            <!--dep btn -->
+            <a asp-controller="Department" asp-action="HoDepartments" asp-route-id="@Model.Ho_Id">
+
+                <button type="button" class="btn   modal-bt1">
+                    عرض أقسام
+                </button>
+            </a>
+            <!--user-block btn -->
+            <button type="button" class="btn   modal-bt1">
+                حظر مستخدم
+            </button>
+            <!--show-emp btn -->
+            <a asp-controller="Employee" asp-action="HoEmployees" asp-route-id="@Model.Ho_Id">
+
+                <button type="button" class="btn   modal-bt1">
+                    عرض الموظفين
+                </button>
+            </a>
+        </div>
+    </div>
+    <!-- end page -->
+    <!-- footer start -->
+    <footer>
+        <div class="footer">
+            <span class="fo_span center">حقوق الطباعة &copy; موقعنا 2022</span>
+        </div>
+
+    </footer>
+    <!-- footer end -->
+</section>
+<!-- end -->
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="~/Vikings/Doctor/jquery.min.js"></script>
+    <script src="~/Vikings/Doctor/bootstrap.bundle.min.js"></script>
+    <script src="~/Vikings/Doctor/jquery.easing.min.js"></script>
+    <script src="~/Vikings/Doctor/sb-admin-2.js"></script>
+    <script src="~/Vikings/Doctor/Chart.min.js"></script>
+    <script src="~/Vikings/Doctor/chart-area-demo.js"></script>
+    <script src="~/Vikings/Doctor/chart-pie-demo.js"></script>
+
+}
+@section Styles{
+    <style>
+        html {
+            direction: rtl;
+        }
+    </style>
+    <link href="~/Vikings/Doctor/all.css" rel="stylesheet" />
+    <link href="~/Vikings/Doctor/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"><!--font -->
+    <link href="~/Vikings/Doctor/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Vikings/It/it.css" rel="stylesheet" />
+}

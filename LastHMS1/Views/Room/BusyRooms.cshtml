@@ -1,0 +1,11 @@
+﻿
+@model IEnumerable<LastHMS1.ShowClasses.BusyRooms>
+
+@foreach (var item in Model)
+{
+    <h1>@item.RoomNumber</h1>
+    <br />
+    <h1>@item.StartDate</h1>
+    <br />
+    <h1>@item.PatientName.</h1>
+}

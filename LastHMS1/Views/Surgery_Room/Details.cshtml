@@ -1,0 +1,36 @@
+﻿@model LastHMS1.Models.Surgery_Room
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Surgery_Room</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Su_Room_Number)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Su_Room_Number)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Su_Room_Floor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Su_Room_Floor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Surgery_Room_Ready)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Surgery_Room_Ready)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Surgery_Room_Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

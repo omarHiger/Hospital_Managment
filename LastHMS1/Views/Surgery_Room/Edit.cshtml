@@ -1,0 +1,49 @@
+﻿@model LastHMS1.Models.Surgery_Room
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Surgery_Room</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Surgery_Room_Id" />
+            <div class="form-group">
+                <label asp-for="Su_Room_Number" class="control-label"></label>
+                <input asp-for="Su_Room_Number" class="form-control" />
+                <span asp-validation-for="Su_Room_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Su_Room_Floor" class="control-label"></label>
+                <input asp-for="Su_Room_Floor" class="form-control" />
+                <span asp-validation-for="Su_Room_Floor" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Surgery_Room_Ready" /> @Html.DisplayNameFor(model => model.Surgery_Room_Ready)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ho_Id" class="control-label"></label>
+                <select asp-for="Ho_Id" class="form-control" asp-items="ViewBag.Ho_Id"></select>
+                <span asp-validation-for="Ho_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

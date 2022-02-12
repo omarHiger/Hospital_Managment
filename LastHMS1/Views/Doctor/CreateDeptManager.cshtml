@@ -1,0 +1,115 @@
+﻿@model LastHMS1.Models.Doctor
+
+@{
+    ViewData["Title"] = "CreateDeptManager";
+}
+
+<h1>CreateDeptManager</h1>
+
+<h4>Doctor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateDeptManager" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Doctor_First_Name" class="control-label"></label>
+                <input asp-for="Doctor_First_Name" class="form-control" />
+                <span asp-validation-for="Doctor_First_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Middle_Name" class="control-label"></label>
+                <input asp-for="Doctor_Middle_Name" class="form-control" />
+                <span asp-validation-for="Doctor_Middle_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Last_Name" class="control-label"></label>
+                <input asp-for="Doctor_Last_Name" class="form-control" />
+                <span asp-validation-for="Doctor_Last_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_EmailName" class="control-label"></label>
+                <input asp-for="Doctor_EmailName" class="form-control" />
+                <span asp-validation-for="Doctor_EmailName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_National_Number" class="control-label"></label>
+                <input asp-for="Doctor_National_Number" class="form-control" />
+                <span asp-validation-for="Doctor_National_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Gender" class="control-label"></label>
+                <input asp-for="Doctor_Gender" class="form-control" />
+                <span asp-validation-for="Doctor_Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Area" class="control-label"></label>
+                <input asp-for="Doctor_Area" class="form-control" />
+                <span asp-validation-for="Doctor_Area" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Street" class="control-label"></label>
+                <input asp-for="Doctor_Street" class="form-control" />
+                <span asp-validation-for="Doctor_Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_City" class="control-label"></label>
+                <input asp-for="Doctor_City" class="form-control" />
+                <span asp-validation-for="Doctor_City" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Doctor_Email" />
+            <input type="hidden" asp-for="Doctor_Password" />
+            <div class="form-group">
+                <label asp-for="Doctor_Family_Members" class="control-label"></label>
+                <input asp-for="Doctor_Family_Members" class="form-control" />
+                <span asp-validation-for="Doctor_Family_Members" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Specialization" class="control-label"></label>
+                <input asp-for="Doctor_Specialization" class="form-control" />
+                <span asp-validation-for="Doctor_Specialization" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Qualifications" class="control-label"></label>
+                <input asp-for="Doctor_Qualifications" class="form-control" />
+                <span asp-validation-for="Doctor_Qualifications" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Social_Status" class="control-label"></label>
+                <input asp-for="Doctor_Social_Status" class="form-control" />
+                <span asp-validation-for="Doctor_Social_Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Birth_Date" class="control-label"></label>
+                <input asp-for="Doctor_Birth_Date" class="form-control" />
+                <span asp-validation-for="Doctor_Birth_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Birth_Place" class="control-label"></label>
+                <input asp-for="Doctor_Birth_Place" class="form-control" />
+                <span asp-validation-for="Doctor_Birth_Place" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Doctor_Hire_Date" />
+            <div class="form-group">
+                <label asp-for="Department_Id" class="control-label"></label>
+                <select asp-for="Department_Id" class ="form-control">
+                    @foreach (var item in ViewBag.Departments)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

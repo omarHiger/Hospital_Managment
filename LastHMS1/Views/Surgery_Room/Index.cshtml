@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LastHMS1.Models.Surgery_Room>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Su_Room_Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Su_Room_Floor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surgery_Room_Ready)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Su_Room_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Su_Room_Floor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surgery_Room_Ready)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Surgery_Room_Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Surgery_Room_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Surgery_Room_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
